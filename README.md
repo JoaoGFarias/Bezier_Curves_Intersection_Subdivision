@@ -5,3 +5,8 @@ of both curves to the points at which all intersections happen.
 The approximation intersection method is the subdivision. 
 The user can move, insert and delete points, with the system responding appropriately in real time. 
 The approximation tolerance is adjustable by the user. Assessments should be made compulsory with the Casteljau algorithm.
+
+LICENSE
+=======
+
+See LICENSE.md for the GNU GENERAL PUBLIC LICENSE
