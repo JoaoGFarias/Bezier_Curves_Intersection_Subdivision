@@ -10,3 +10,10 @@ LICENSE
 =======
 
 See LICENSE.md for the GNU GENERAL PUBLIC LICENSE
+
+DEPENDENCIES
+============
+
+* Python 2.7
+* Open-CV Python
+* NumPy
