@@ -14,7 +14,7 @@ See LICENSE.md for the GNU GENERAL PUBLIC LICENSE
 DEPENDENCIES
 ============
 
-* [Python 2.7]https://www.python.org/download/releases/2.7)
+* [Python 2.7](https://www.python.org/download/releases/2.7)
 * [OpenCV Python](docs.opencv.org)
 * [NumPy](http://www.numpy.org/)
 * [fn.py](https://github.com/kachayev/fn.py)
