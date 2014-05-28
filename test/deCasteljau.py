@@ -1,9 +1,10 @@
+from inspect import isfunction
+
 __author__ = 'Joao'
 
 import unittest
 from random import randint
 from main.bezierCurveAlgorithms.deCasteljau import bezier_curve_generator
-from main.bezierCurveAlgorithms.deCasteljau import de_casteljau_level
 from main.Geometry.Point import Point2D
 from main.Geometry.Point import ControlPoints
 
@@ -14,22 +15,6 @@ class DeCasteljauTestCase(unittest.TestCase):
         self.point2 = Point2D(x=15, y=85)
         self.point3 = Point2D(x=-96, y=14)
 
-    def test_casteljau_level(self):
-        """
-        Tests the function used to make one level of the De Casteljau Algorithm
-        """
-
-        resulted_points = de_casteljau_level([self.point1,self.point2,self.point3],0.5)
-
-        assert len(resulted_points) == 2
-        assert resulted_points[0].X == 7.5
-        assert resulted_points[0].Y == 42.5
-        assert resulted_points[1].X == -40.5
-        assert resulted_points[1].Y == 49.5
-
-        pass
-
-
     def test_single_point(self):
         """
         Tests the algorithm when there is only one control point
@@ -39,6 +24,7 @@ class DeCasteljauTestCase(unittest.TestCase):
         bezier_curve = bezier_curve_generator(ControlPoints([self.point1]))
 
         #Since there is only one control point, any value passed as parameter should return this point
+        assert isfunction(bezier_curve)
         assert self.point1 == bezier_curve(0)
         assert self.point1 == bezier_curve(1)
         assert self.point1 == bezier_curve(0.5)
@@ -52,7 +38,7 @@ class DeCasteljauTestCase(unittest.TestCase):
         bezier_curve = bezier_curve_generator(ControlPoints([self.point1, self.point2, self.point3]))
 
         bezier_point = bezier_curve(0)
-        assert isinstance(bezier_point, self.point1)
+        assert isinstance(bezier_point, Point2D)
         assert self.point1 == bezier_point
         pass
 
@@ -64,7 +50,7 @@ class DeCasteljauTestCase(unittest.TestCase):
         bezier_curve = bezier_curve_generator(ControlPoints([self.point1, self.point2, self.point3]))
 
         bezier_point = bezier_curve(1)
-        assert isinstance(bezier_point, self.point3)
+        assert isinstance(bezier_point, Point2D)
         assert self.point3 == bezier_point
         pass
 
@@ -87,13 +73,14 @@ class DeCasteljauTestCase(unittest.TestCase):
         """
         control_points_list = []
 
-        for x in range(0, 10000):
+        #Tested for 10000; but the test was changed to 100 to speed up future verifications
+        for x in range(0, 100):
             control_points_list.append(Point2D(x=randint(0, 1000), y=randint(0, 10000)))
 
         bezier_curve = bezier_curve_generator(ControlPoints(control_points_list))
 
         bezier_point = bezier_curve(0)
-        assert isinstance(bezier_point, control_points_list[0])
+        assert isinstance(bezier_point, Point2D)
         assert control_points_list[0] == bezier_point
 
         pass

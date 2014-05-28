@@ -8,6 +8,9 @@ class Point2D(object):
         self.X = x
         self.Y = y
 
+    def __eq__(self, other):
+        return self.X == other.X and self.Y == other.Y
+
     def move(self, dx, dy):
         """Returns the point resulted of the translation"""
         newX = self.X + dx
@@ -45,6 +48,12 @@ class ControlPoints(object):
         self.control_points_list = control_points_list
         self.numberOfControlPoints = len(self.control_points_list)
         pass
+
+    def __len__(self):
+        return len(self.control_points_list)
+
+    def __getitem__(self, item):
+        return self.control_points_list[item]
 
     def linear_interpolation(self,point1,point2,t):
 
