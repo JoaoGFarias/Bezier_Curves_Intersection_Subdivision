@@ -41,7 +41,7 @@ class ControlPoints(object):
         @param control_points_list: List of control points  of the Bezier Curve to be generated
         @type control_points_list: object
         """
-        assert isinstance(control_points_list, [])
+        assert isinstance(control_points_list, list)
         self.control_points_list = control_points_list
         self.numberOfControlPoints = len(self.control_points_list)
         pass
