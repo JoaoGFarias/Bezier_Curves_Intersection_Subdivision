@@ -18,3 +18,4 @@ DEPENDENCIES
 * [OpenCV Python](docs.opencv.org)
 * [NumPy](http://www.numpy.org/)
 * [fn.py](https://github.com/kachayev/fn.py)
+* [TKinter] (http://tkinter.unpythonic.net/wiki/)
