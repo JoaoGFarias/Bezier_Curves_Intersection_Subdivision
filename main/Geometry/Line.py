@@ -7,8 +7,8 @@ class Line(object):
     def __init__(self, p1, p2):
         """Defines two points that form the straigt line"""
 
-        assert isinstance(x, Point2D)
-        assert isinstance(y, Point2D)
+        assert isinstance(p1, Point2D)
+        assert isinstance(p2, Point2D)
         self.p1 = p1
         self.p2 = p2
 
