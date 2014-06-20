@@ -1,6 +1,5 @@
 __author__ = 'Joao'
 
-
 from fn import recur
 
 def bezier_curve_generator(control_points_list):
@@ -13,7 +12,8 @@ def bezier_curve_generator(control_points_list):
     """
 
     def foo(t):
-        return bezier_curve(control_points_list,t)
+        control_points=control_points_list.getControPoints()
+        return bezier_curve(control_points,t)
     return foo
 
 @recur.tco  #Avoids stack overflow due recursion
@@ -33,4 +33,4 @@ def bezier_curve(points, t):
         for i in range(0,len(points)-1):
             newPoints.append(points[i].linear_interpolation(points[i+1],t))
 
-        return True,(newPoints,t)  #Tail recursion call
+        return True,(newPoints,t)

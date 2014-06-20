@@ -3,6 +3,7 @@ __author__ = 'Joao'
 import math
 
 class Point2D(object):
+    
     def __init__(self, x, y):
         """Defines x and y axis"""
         self.X = x
@@ -10,12 +11,16 @@ class Point2D(object):
 
     def __eq__(self, other):
         return self.X == other.X and self.Y == other.Y
-
+    
     def move(self, dx, dy):
         """Returns the point resulted of the translation"""
-        newX = self.X + dx
-        newY = self.Y + dy
-        return Point2D(x = newX,y = newY)
+        self.X=dx
+        self.Y=dy
+        return self
+        #removi essa parte pois retornava uma nova instancia do ponto, e nao o ponto em questao
+        #newX = self.X + dx
+        #newY = self.Y + dy
+        #return Point2D(x = newX,y = newY)
 
     def __str__(self):
         return "Point(%s,%s)"%(self.X, self.Y)
@@ -38,23 +43,28 @@ class Point2D(object):
 
 class ControlPoints(object):
     def __init__(self, control_points_list):
+        
         """
         Holds a list of points as control points
 
         @param control_points_list: List of control points  of the Bezier Curve to be generated
         @type control_points_list: object
         """
+
         assert isinstance(control_points_list, list)
         self.control_points_list = control_points_list
         self.numberOfControlPoints = len(self.control_points_list)
         pass
 
+    def getControPoints(self):
+        return self.control_points_list
+    
     def __len__(self):
         return len(self.control_points_list)
 
     def __getitem__(self, item):
         return self.control_points_list[item]
-
+    
     def linear_interpolation(self,point1,point2,t):
 
         """
